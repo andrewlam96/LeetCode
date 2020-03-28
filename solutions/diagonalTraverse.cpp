@@ -1,3 +1,5 @@
+//Time Complexity O(n * m)
+//Space Complexity O(min(n,m))
 class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& matrix) {
