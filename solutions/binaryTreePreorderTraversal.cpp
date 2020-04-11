@@ -28,3 +28,31 @@ public:
         return nodes;
     }
 };
+
+//Solution 2: Iterative
+//Time Complexity O(n)
+//Space Complexity O(n)
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        //use stack to store nodes
+        //vector only used because that is what they want returned (not neccesarily needed)
+        stack<TreeNode*> myStack;
+        vector<int> solution;
+        
+        if(!root) return solution; //if root node is null return
+        
+        myStack.push(root); //push the first node into the stack
+        //will loop until stack is empty
+        while(!myStack.empty()){
+            TreeNode* node = myStack.top(); //we want to work with the top node of the stack
+            solution.push_back(node->val); //in this case we want to put it in vector
+            myStack.pop(); //then delete it since it has been used
+            //since we are doing this iteratively and using a stack, 
+            //we want to use opposite logic as regular recursion since stack is LIFO (Last In First Out)
+            if(node->right) myStack.push(node->right); //do right first since it will go out last
+            if(node->left) myStack.push(node->left); //traverse left second since it will go out first
+        }
+        return solution;
+    }
+};
