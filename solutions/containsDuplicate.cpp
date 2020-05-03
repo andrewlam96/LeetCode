@@ -14,3 +14,20 @@ public:
         return false; //return false if no duplicates
     }
 };
+
+//Time Complexity O(n log n)
+//Space Complexity O(1)
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        //sort vector so it is in order
+        sort(nums.begin(), nums.end());
+
+        //go from 1 to the end
+        for(int i = 1; i < nums.size(); ++i){
+            //if number before and current value is same return true
+            if(nums[i] == nums[i - 1]) return true;
+        }
+        return false;
+    }
+};
